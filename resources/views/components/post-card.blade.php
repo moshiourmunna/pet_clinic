@@ -1,0 +1,2 @@
+@props(['post'])
+<div class="card blog"><a href="{{ route('blog.show', $post) }}"><img src="{{ $post->image_url }}" alt="{{ $post->title }}" loading="lazy"></a><div class="bd"><div class="d">{{ $post->published_at?->format('d M Y') }} · <span>{{ $post->category }}</span></div><h3><a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a></h3><a class="more" style="color:var(--p);font-weight:600;font-size:14px" href="{{ route('blog.show', $post) }}"><span>{{ __('Read more') }}</span> →</a></div></div>

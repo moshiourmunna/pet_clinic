@@ -1,0 +1,2 @@
+@props(['plan'])
+<div @class(['card', 'price', 'hot' => $plan->is_featured])>@if($plan->is_featured)<span class=ribbon><span>{{ __('Popular') }}</span></span>@endif<h3>{{ $plan->name }}</h3><div class="amt">৳{{ number_format($plan->price) }}<small>/<span>{{ $plan->period }}</span></small></div><ul>@foreach($plan->features ?? [] as $f)<li><i class='fa fa-check'></i><span>{{ $f }}</span></li>@endforeach</ul><a @class(['btn', 'btn-p' => $plan->is_featured, 'btn-o' => ! $plan->is_featured]) href="{{ route('appointment.create') }}"><span>{{ __('Choose Plan') }}</span></a></div>

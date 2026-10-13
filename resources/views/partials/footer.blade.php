@@ -1,0 +1,12 @@
+<footer><div class="wrap"><div class="fgrid4"><div><img src="{{ asset('assets/logo.svg') }}" alt="{{ $settings['clinic_name'] }}" style="height:52px;filter:brightness(0) invert(1);margin-bottom:16px">
+<p style="font-size:14px"><span>{{ __('Compassionate, modern veterinary care for dogs, cats, birds and exotic pets. Your pet is family to us.') }}</span></p>
+<div class="soc"><a href="{{ $settings['facebook'] }}" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="{{ $settings['instagram'] }}" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="{{ $settings['youtube'] }}" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="https://wa.me/{{ $settings['whatsapp'] }}" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div>
+<div><h4>{{ __('Quick Links') }}</h4><ul><li><a href="{{ route('about') }}">{{ __('About') }}</a></li><li><a href="{{ route('services') }}">{{ __('Services') }}</a></li><li><a href="{{ route('doctors.index') }}">{{ __('Doctors') }}</a></li><li><a href="{{ route('pricing') }}">{{ __('Pricing') }}</a></li><li><a href="{{ route('gallery') }}">{{ __('Gallery') }}</a></li><li><a href="{{ route('blog.index') }}">{{ __('Blog') }}</a></li></ul></div>
+<div><h4>{{ __('Services') }}</h4><ul>
+@foreach(\App\Models\Service::active()->where('is_featured', true)->take(6)->get() as $fs)
+<li><a href="{{ route('appointment.create', ['service' => $fs->slug]) }}">{{ $fs->name }}</a></li>
+@endforeach
+</ul></div>
+<div><h4>{{ __('Contact') }}</h4><ul><li><i class="fa fa-location-dot"></i> <span>{{ \App\Models\Setting::tr('address') }}</span></li><li><i class="fa fa-phone"></i> {{ $settings['phone'] }}</li><li><i class="fa fa-envelope"></i> {{ $settings['email'] }}</li></ul>
+<h4 style="margin-top:18px">{{ __('Newsletter') }}</h4><form style="display:flex;gap:8px" method="post" action="{{ route('newsletter.store') }}" data-ajax>@csrf<input name="email" type="email" required placeholder="{{ __('Email') }}" style="border:0"><button class="btn btn-a" style="padding:10px 14px" aria-label="Subscribe"><i class="fa fa-paper-plane"></i></button></form></div></div>
+<div class="copy"><span>© {{ date('Y') }} {{ $settings['clinic_name'] }}. <span>{{ __('All rights reserved.') }}</span></span><span><a href="#"><span>{{ __('Privacy Policy') }}</span></a> · <a href="#"><span>{{ __('Terms') }}</span></a> · <a href="#"><span>{{ __('Refund Policy') }}</span></a></span></div></div></footer>

@@ -1,0 +1,1 @@
+<div class="fab"><a href="https://wa.me/{{ $settings['whatsapp'] }}" style="background:#25D366" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="tel:{{ $settings['emergency_phone'] }}" style="background:var(--a)" aria-label="Call"><i class="fa fa-phone"></i></a></div>
